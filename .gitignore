@@ -1,3 +1,13 @@
-cache/
+# secrets
 .env
+
+# python
 __pycache__/
+*.pyc
+venv/
+.venv/
+backend/cache/
+
+# node
+frontend/node_modules/
+frontend/dist/

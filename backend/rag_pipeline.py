@@ -26,9 +26,9 @@ from google import genai
 from google.genai import types
 from sentence_transformers import SentenceTransformer
 
-load_dotenv()
-
 BASE_DIR = Path(__file__).parent
+load_dotenv(BASE_DIR.parent / ".env")  # .env lives in the project root
+
 CACHE_DIR = BASE_DIR / "cache"
 FALLBACK_CSV = BASE_DIR / "jobs.csv"
 
@@ -234,3 +234,42 @@ def analyze_matches(profile: dict, top_jobs: pd.DataFrame) -> list[dict]:
         {k: profile.get(k) for k in ("skills", "experience_level", "summary")}, indent=2
     )
     return ask_gemini_json(ANALYSIS_PROMPT.format(profile=profile_text, jobs=jobs_text))
+
+
+# ---------------------------------------------------------------------------
+# Full pipeline - called by the API
+# ---------------------------------------------------------------------------
+def run_pipeline(pdf_file, location: str = "", top_k: int = 5) -> dict:
+    resume_text = extract_resume_text(pdf_file)
+    if not resume_text:
+        raise ValueError("Couldn't read any text from this PDF (is it a scanned image?).")
+
+    profile = extract_profile(resume_text)                                  # LLM call 1
+    jobs_df, source = fetch_jobs(profile.get("suggested_roles", []), location)
+    index = build_index(jobs_df)                                            # vector store
+    top_jobs = retrieve(profile_to_text(profile), index, jobs_df, k=top_k)  # R
+    analysis = analyze_matches(profile, top_jobs)                           # A + G (LLM call 2)
+
+    by_id = {item.get("job_id"): item for item in analysis}
+    jobs = []
+    for i, job in enumerate(top_jobs.to_dict(orient="records")):
+        info = by_id.get(i + 1, {})
+        jobs.append({
+            "title": job["title"],
+            "company": job["company"],
+            "location": job["location"],
+            "url": job.get("url", ""),
+            "description": job["description"][:400],
+            "match_score": float(job["match_score"]),
+            "match_reason": info.get("match_reason", ""),
+            "matched_skills": info.get("matched_skills", []),
+            "missing_skills": info.get("missing_skills", []),
+            "recommendations": info.get("recommendations", []),
+        })
+
+    return {
+        "profile": profile,
+        "source": source,
+        "jobs_searched": len(jobs_df),
+        "jobs": jobs,
+    }
