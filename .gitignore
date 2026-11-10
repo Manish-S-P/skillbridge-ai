@@ -11,3 +11,6 @@ backend/cache/
 # node
 frontend/node_modules/
 frontend/dist/
+
+# research paper drafts (kept local, not public)
+paper/

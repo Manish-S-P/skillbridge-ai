@@ -1,0 +1,62 @@
+[
+  {
+    "name": "Data analysis",
+    "profile": "Comfortable with spreadsheets, writing database queries and making charts. Did a project turning college canteen sales records into weekly insight reports using pandas.",
+    "relevant": ["Data Analyst Intern", "Junior Data Analyst", "Business Analyst", "Product Analyst", "Power BI Developer"]
+  },
+  {
+    "name": "Machine learning",
+    "profile": "Built image classifiers and house price regression models with scikit-learn and PyTorch. Completed deep learning coursework and Kaggle competitions.",
+    "relevant": ["Data Scientist", "Machine Learning Engineer", "ML Intern", "Computer Vision Engineer", "AI Research Intern"]
+  },
+  {
+    "name": "NLP / Generative AI",
+    "profile": "Worked on sentiment analysis and a chatbot using transformer models. Built a question answering app over PDFs using LLM prompting and embeddings.",
+    "relevant": ["NLP Engineer", "Generative AI Developer", "Machine Learning Engineer", "AI Research Intern"]
+  },
+  {
+    "name": "Frontend web",
+    "profile": "Created responsive websites with ReactJS, JS, HTML5 and Tailwind CSS. Converted Figma mockups into working pages.",
+    "relevant": ["Frontend Developer", "Full Stack Developer", "Web Developer Intern"]
+  },
+  {
+    "name": "Backend development",
+    "profile": "Developed server-side REST endpoints with Express and Django, used Postgres and Mongo databases, and wrote unit tests.",
+    "relevant": ["Backend Developer", "Python Developer", "Full Stack Developer", "Junior Software Engineer"]
+  },
+  {
+    "name": "Mobile apps",
+    "profile": "Made a smartphone app in Kotlin for college events and a cross-platform expense tracker in Dart; published one app on the Play Store.",
+    "relevant": ["Android Developer", "Flutter Developer", "iOS Developer Intern"]
+  },
+  {
+    "name": "DevOps / cloud",
+    "profile": "Set up containers and automated build-and-deploy workflows for a student project, hosted on Amazon Web Services, with Linux shell scripting.",
+    "relevant": ["DevOps Engineer", "Cloud Engineer", "Site Reliability Engineer"]
+  },
+  {
+    "name": "Cybersecurity",
+    "profile": "Participate in capture-the-flag contests, practise ethical hacking on Kali Linux, and know common web vulnerabilities and network defence.",
+    "relevant": ["Cybersecurity Analyst", "Security Intern"]
+  },
+  {
+    "name": "Data engineering",
+    "profile": "Built batch pipelines that move and transform large datasets using PySpark, scheduled with workflow tools, and loaded into a warehouse.",
+    "relevant": ["Data Engineer", "Big Data Intern", "Database Administrator"]
+  },
+  {
+    "name": "Software testing",
+    "profile": "Wrote test plans and test cases, automated browser tests, and logged defects during an internship.",
+    "relevant": ["QA Automation Engineer", "Software Tester Intern"]
+  },
+  {
+    "name": "Embedded / IoT",
+    "profile": "Programmed microcontrollers in C, built a smart irrigation prototype with soil moisture sensors on an ESP32 and Raspberry Pi.",
+    "relevant": ["Embedded Systems Engineer", "IoT Developer Intern"]
+  },
+  {
+    "name": "UI/UX design",
+    "profile": "Designed wireframes and interactive prototypes, conducted user interviews and usability tests for a campus app.",
+    "relevant": ["UI/UX Designer"]
+  }
+]
